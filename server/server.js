@@ -1,28 +1,30 @@
 const express = require("express");
-const app = express();
-
 const http = require("http");
+
+const app = express();
 const server = http.createServer(app);
 
 const { Server } = require("socket.io");
 const io = new Server(server, {
-  cors: {
-    origin: "*"
-  },
-});
+    cors: {
+        origin: "*",
+    }
+})
 
 io.on("connection", (socket) => {
-  console.log("a user connected with id:", socket.id);
-    socket.on("client-ready", (msg) => {
-        console.log("Message from client:", msg);
-    });
-    socket.on("button-clicked", (msg) => {
-        console.log("Button was clicked on the client side:", msg);
+    socket.on("send_message", (msg) => {
+        socket.broadcast.emit("recieve_message", msg);
+    })
+
+    socket.on("user_typing", (data) => {
+        socket.broadcast.emit("user_typing", data)
+    })
+
+    socket.on("new_user", (data) => {
+        socket.broadcast.emit("new_user", data.user)
     })
 })
 
-
-
 server.listen(3001, () => {
-  console.log(" Server listening on port 3001");
+    console.log("Server is running on port 3001");
 })
