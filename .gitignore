@@ -1,0 +1,59 @@
+# === Node.js (both client and server) ===
+client/node_modules/
+server/node_modules/
+node_modules/
+
+# === Logs ===
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# === Dependency directories ===
+client/.next/
+client/.turbo/
+server/dist/          # if you're transpiling e.g., from TypeScript
+
+# === Build output ===
+dist/
+build/
+out/
+.next/
+.turbo/
+
+# === Runtime data ===
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# === OS / IDE / Editor junk ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# === Env files ===
+.env
+.env.local
+.env.development
+.env.production
+client/.env
+server/.env
+
+# === TypeScript cache ===
+*.tsbuildinfo
+
+# === Coverage / test output ===
+coverage/
+client/coverage/
+server/coverage/
+*.lcov
+
+# === Optional: lockfiles (only if you use one package manager) ===
+# Uncomment the one you're not using:
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
